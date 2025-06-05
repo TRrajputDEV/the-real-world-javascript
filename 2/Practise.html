@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character - Counter</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="m-4 ">
+    <div class="border-2 p-3 gap-3 w-[20rem] flex flex-col">
+        <div class="p-3  flex flex-row gap-2 w-[18rem] ">
+            <label for="textInput">Enter Text: </label>
+            <input class="outline-none " type="text" name="textInput" id="textInput" maxlength="50"
+                placeholder="Enter the text here ... ">
+        </div>
+        <div>
+            <p class="p-3 bg-blue-300 w-[16rem]">Character remaining: <span id="charCount"> 50</span></p>
+        </div>
+    </div>
+
+    <script>
+        const textInput = document.getElementById("textInput");
+        const charCount = document.getElementById("charCount");
+
+        textInput.addEventListener('input', () => {
+            const remaining = 50 - textInput.value.length;
+
+            if (remaining > 10) {
+                charCount.style.color = "green";
+                charCount.textContent = remaining;
+            } else {
+                charCount.style.color = "red";
+                charCount.textContent = remaining;
+            }
+
+        })
+    </script>
+</body>
+
+</html>
