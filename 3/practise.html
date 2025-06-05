@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- Done Learnt how to use foreach loop and how to use event listeners.. -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Highlight Matching Items</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .highlight{
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body class="h-screen flex flex-col justify-center">
+    <div class="flex flex-col gap-3 border-2 border-gray-400 rounded-lg p-4 w-80 bg-white shadow">
+        <input class="outline-none p-2 border-b-2 border-gray-300 mb-2" type="text" name="searchInput" id="searchInput" placeholder="Search Item ...">
+        <ul id="itemList" class="mt-3 divide-y divide-gray-300">
+            <li class=" list-group-item px-3 py-2 border-l border-r border-t border-gray-300 first:rounded-t last:rounded-b">Apple</li>
+            <li class=" list-group-item px-3 py-2 border-l border-r border-gray-300">Banana</li>
+            <li class=" list-group-item px-3 py-2 border-l border-r border-gray-300">Cherry</li>
+            <li class=" list-group-item px-3 py-2 border-l border-r border-gray-300">Date</li>
+            <li class=" list-group-item px-3 py-2 border-l border-r border-gray-300">Elderberry</li>
+            <li class=" list-group-item px-3 py-2 border-l border-r border-gray-300">Fig</li>
+            <li class=" list-group-item px-3 py-2 border-l border-r border-gray-300">Grape</li>
+            <li class=" list-group-item px-3 py-2 border-l border-r border-gray-300">Honeydew</li>
+        </ul>
+    </div>
+    <script>
+        const searchInput = document.getElementById('searchInput');
+
+        searchInput.addEventListener('input',()=>{
+            const searchTerm = searchInput.value.toLowerCase();
+            const Items = document.querySelectorAll("#itemList .list-group-item");
+            Items.forEach((item)=>{
+                const text = item.textContent.toLowerCase();
+                const index = text.indexOf(searchTerm);
+
+                if( index != -1 && searchTerm !== ""){
+                    const highlightedText = item.textContent.substring(index,index+searchTerm.length);
+
+                    item.innerHTML = item.textContent.replace(
+                        highlightedText, `<span class ="highlight"> ${highlightedText}</span>`
+                    );
+                }else{
+                    item.innerHTML = item.textContent;
+                }
+
+            });
+        });
+        
+    </script>
+</body>
+</html>
