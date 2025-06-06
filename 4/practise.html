@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toggle Section</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="h-screen m-3 ">
+    <div class="collapsible">
+        <button id="collapsible-button" class="collapsible-button p-3 bg-cyan-300">Toggle Section</button>
+        <div id="collapsible-content" class="collapsible-content" style="display: none;">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur corrupti ducimus perspiciatis.</p>
+        </div>
+
+    </div>
+
+    <script>
+
+            const collapsibleButton = document.getElementById('collapsible-button');
+            const collapsibleContent = document.getElementById('collapsible-content');
+
+            collapsibleButton.addEventListener('click', function () {
+                if (collapsibleContent.style.display === "block") {
+                    collapsibleContent.style.display = "none";
+                } else {
+                    collapsibleContent.style.display = "block";
+                }
+            });
+
+    </script>
+</body>
+
+</html>
