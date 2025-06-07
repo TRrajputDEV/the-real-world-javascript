@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Timer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#232526] via-[#414345] to-[#0f2027]">
+    <div
+        class="bg-gradient-to-br from-[#434343] via-[#232526] to-[#1a1a2e] rounded-2xl shadow-2xl p-10 flex flex-col items-center border border-[#3a3a4d] backdrop-blur-md">
+        <h1 class="text-4xl font-bold text-[#f8fafc] mb-6 drop-shadow-lg">Countdown Timer</h1>
+        <p id="timer" class="text-6xl font-mono text-[#ffff] mb-4 tracking-widest drop-shadow-lg">00:00:00</p>
+
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const timerElement = document.getElementById("timer");
+            let timeLeft = 3600; // Time in seconds (e.g., 1 hour)
+
+            function updateTimer() {
+                const hours = Math.floor(timeLeft / 3600);
+                const minutes = Math.floor((timeLeft % 3600) / 60);
+                const seconds = timeLeft % 60;
+
+                timerElement.textContent = `${String(hours).padStart(2, "0")}:${String(
+                    minutes
+                ).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+
+                if (timeLeft > 0) {
+                    timeLeft--;
+                } else {
+                    clearInterval(timerInterval);
+                }
+            }
+
+            const timerInterval = setInterval(updateTimer, 1000);
+            updateTimer(); // Initial call to display the timer immediately
+        });
+
+    </script>
+</body>
+
+</html>

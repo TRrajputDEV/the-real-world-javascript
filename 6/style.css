@@ -1,13 +1,28 @@
 /* Initial state of the sticky header (hidden) */
 .sticky-header {
   position: fixed;
-  top: -100px; /* Hide the header initially */
-  width: 1110px;
-  transition: top 0.3s;
-  z-index: 1000; /* Ensure it is above other content */
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%) scale(0.98);
+  width: 90vw;
+  max-width: 100rem;
+  background: linear-gradient(90deg, #23272f 0%, #181a20 100%);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.7), 0 1.5px 6px rgba(30,30,30,0.5);
+  border-radius: 0 0 1.5rem 1.5rem;
+  color: #f1f1f1;
+  opacity: 0;
+  transition:
+    top 0.5s cubic-bezier(0.77,0,0.175,1),
+    opacity 0.5s cubic-bezier(0.77,0,0.175,1),
+    box-shadow 0.5s,
+    transform 0.5s cubic-bezier(0.77,0,0.175,1);
+  z-index: 10;
+  padding: 1.5rem 3rem;
+  letter-spacing: 0.05em;
 }
-
-/* Visible state of the sticky header */
 .sticky-header.visible {
-  top: 0; /* Show the header */
+  top: 0;
+  opacity: 1;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.85), 0 3px 12px rgba(40,40,40,0.4);
+  transform: translateX(-50%) scale(1.02);
 }
