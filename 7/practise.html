@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Learnt about the execCommand and about I can make an editor  -->
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Copy to Clipboard</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Font Awesome CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="container mt-5">
+        <!-- Code starts from here -->
+        <div class="code-snippet">
+            <div id="editor" class="form-control" contenteditable="true" style="min-height: 100px;">const example = "Hello, World!";</div>
+            <button id="boldButton" class="btn btn-secondary mt-2" onclick="makeBold()">Bold</button>
+            <button id="italicButton" class="btn btn-secondary mt-2" onclick="makeItalic()">Italic</button>
+            <button id="cutButton" class="btn btn-secondary mt-2" onclick="makeCut()">Cut</button>
+        </div>
+
+    </div>
+
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+
+        const editor = document.getElementById('editor');
+        editor.select();
+
+        function makeBold() {
+            document.execCommand("bold");
+            const editor = document.getElementById('editor');
+        editor.select();
+        }
+
+        function makeItalic() {
+            document.execCommand("italic");
+        }
+
+        function makeCut() {
+            document.execCommand("cut");
+        }
+
+    </script>
+</body>
+
+</html>
